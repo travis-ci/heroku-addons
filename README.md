@@ -1,5 +1,7 @@
 # MetaDashboard
 
+This is collection of links to Heroku app addons.
+
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
