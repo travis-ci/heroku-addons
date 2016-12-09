@@ -1,5 +1,5 @@
-defmodule MetaDashboard.Router do
-  use MetaDashboard.Web, :router
+defmodule HerokuAddons.Router do
+  use HerokuAddons.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,7 +13,7 @@ defmodule MetaDashboard.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", MetaDashboard do
+  scope "/", HerokuAddons do
     pipe_through :browser # Use the default browser stack
 
     get "/", DashboardController, :index
@@ -21,7 +21,7 @@ defmodule MetaDashboard.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", MetaDashboard do
+  # scope "/api", HerokuAddons do
   #   pipe_through :api
   # end
 end

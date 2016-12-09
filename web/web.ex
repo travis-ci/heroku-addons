@@ -1,12 +1,12 @@
-defmodule MetaDashboard.Web do
+defmodule HerokuAddons.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use MetaDashboard.Web, :controller
-      use MetaDashboard.Web, :view
+      use HerokuAddons.Web, :controller
+      use HerokuAddons.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -26,8 +26,8 @@ defmodule MetaDashboard.Web do
     quote do
       use Phoenix.Controller
 
-      import MetaDashboard.Router.Helpers
-      import MetaDashboard.Gettext
+      import HerokuAddons.Router.Helpers
+      import HerokuAddons.Gettext
     end
   end
 
@@ -41,9 +41,9 @@ defmodule MetaDashboard.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import MetaDashboard.Router.Helpers
-      import MetaDashboard.ErrorHelpers
-      import MetaDashboard.Gettext
+      import HerokuAddons.Router.Helpers
+      import HerokuAddons.ErrorHelpers
+      import HerokuAddons.Gettext
     end
   end
 
@@ -56,7 +56,7 @@ defmodule MetaDashboard.Web do
   def channel do
     quote do
       use Phoenix.Channel
-      import MetaDashboard.Gettext
+      import HerokuAddons.Gettext
     end
   end
 

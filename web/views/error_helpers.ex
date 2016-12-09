@@ -1,4 +1,4 @@
-defmodule MetaDashboard.ErrorHelpers do
+defmodule HerokuAddons.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule MetaDashboard.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(MetaDashboard.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(HerokuAddons.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(MetaDashboard.Gettext, "errors", msg, opts)
+      Gettext.dgettext(HerokuAddons.Gettext, "errors", msg, opts)
     end
   end
 end

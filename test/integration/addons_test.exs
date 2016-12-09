@@ -1,5 +1,5 @@
-defmodule MetaDashboard.Integration.Addons do
-  use MetaDashboard.ConnCase
+defmodule HerokuAddons.Integration.Addons do
+  use HerokuAddons.ConnCase
 
   import Mock
 

@@ -1,3 +1,3 @@
-defmodule MetaDashboard.LayoutView do
-  use MetaDashboard.Web, :view
+defmodule HerokuAddons.LayoutView do
+  use HerokuAddons.Web, :view
 end

@@ -6,11 +6,11 @@
 use Mix.Config
 
 # Configures the endpoint
-config :meta_dashboard, MetaDashboard.Endpoint,
+config :heroku_addons, HerokuAddons.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "Ne2mLpvVDSrC0pDgwtfgaB9oeglfrnFJAHlHFhs+kI2cTHJpgtuLqRXPwheZlIs4",
-  render_errors: [view: MetaDashboard.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: MetaDashboard.PubSub,
+  render_errors: [view: HerokuAddons.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: HerokuAddons.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
@@ -27,7 +27,7 @@ heroku_apps = case heroku_apps_env do
   _ -> ~w(#{heroku_apps_env})
 end
 
-config :meta_dashboard,
+config :heroku_addons,
   heroku_apps: heroku_apps
 
 # Import environment specific config. This must remain at the bottom

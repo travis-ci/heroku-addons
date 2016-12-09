@@ -1,14 +1,14 @@
-defmodule MetaDashboard.Endpoint do
-  use Phoenix.Endpoint, otp_app: :meta_dashboard
+defmodule HerokuAddons.Endpoint do
+  use Phoenix.Endpoint, otp_app: :heroku_addons
 
-  socket "/socket", MetaDashboard.UserSocket
+  socket "/socket", HerokuAddons.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :meta_dashboard, gzip: false,
+    at: "/", from: :heroku_addons, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -35,8 +35,8 @@ defmodule MetaDashboard.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_meta_dashboard_key",
+    key: "_heroku_addons_key",
     signing_salt: "FRgQCuZz"
 
-  plug MetaDashboard.Router
+  plug HerokuAddons.Router
 end

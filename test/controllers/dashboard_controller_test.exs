@@ -1,5 +1,5 @@
-defmodule MetaDashboard.DashboardControllerTest do
-  use MetaDashboard.ConnCase
+defmodule HerokuAddons.DashboardControllerTest do
+  use HerokuAddons.ConnCase
 
   import Mock
 

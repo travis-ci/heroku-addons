@@ -1,8 +1,8 @@
-defmodule MetaDashboard.Mixfile do
+defmodule HerokuAddons.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :meta_dashboard,
+    [app: :heroku_addons,
      version: "0.0.1",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -16,7 +16,7 @@ defmodule MetaDashboard.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {MetaDashboard, []},
+    [mod: {HerokuAddons, []},
      applications: [
        :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
        :ex_heroku_client

@@ -1,3 +1,3 @@
-defmodule MetaDashboard.DashboardViewTest do
-  use MetaDashboard.ConnCase, async: true
+defmodule HerokuAddons.DashboardViewTest do
+  use HerokuAddons.ConnCase, async: true
 end

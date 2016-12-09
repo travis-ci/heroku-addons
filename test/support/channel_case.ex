@@ -1,4 +1,4 @@
-defmodule MetaDashboard.ChannelCase do
+defmodule HerokuAddons.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -22,7 +22,7 @@ defmodule MetaDashboard.ChannelCase do
 
 
       # The default endpoint for testing
-      @endpoint MetaDashboard.Endpoint
+      @endpoint HerokuAddons.Endpoint
     end
   end
 

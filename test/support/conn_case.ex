@@ -1,4 +1,4 @@
-defmodule MetaDashboard.ConnCase do
+defmodule HerokuAddons.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,10 +20,10 @@ defmodule MetaDashboard.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      import MetaDashboard.Router.Helpers
+      import HerokuAddons.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint MetaDashboard.Endpoint
+      @endpoint HerokuAddons.Endpoint
     end
   end
 

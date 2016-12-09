@@ -1,5 +1,5 @@
-defmodule MetaDashboard.ErrorView do
-  use MetaDashboard.Web, :view
+defmodule HerokuAddons.ErrorView do
+  use HerokuAddons.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

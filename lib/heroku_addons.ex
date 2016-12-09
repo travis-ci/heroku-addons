@@ -1,4 +1,4 @@
-defmodule MetaDashboard do
+defmodule HerokuAddons do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -9,21 +9,21 @@ defmodule MetaDashboard do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the endpoint when the application starts
-      supervisor(MetaDashboard.Endpoint, []),
-      # Start your own worker by calling: MetaDashboard.Worker.start_link(arg1, arg2, arg3)
-      # worker(MetaDashboard.Worker, [arg1, arg2, arg3]),
+      supervisor(HerokuAddons.Endpoint, []),
+      # Start your own worker by calling: HerokuAddons.Worker.start_link(arg1, arg2, arg3)
+      # worker(HerokuAddons.Worker, [arg1, arg2, arg3]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: MetaDashboard.Supervisor]
+    opts = [strategy: :one_for_one, name: HerokuAddons.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    MetaDashboard.Endpoint.config_change(changed, removed)
+    HerokuAddons.Endpoint.config_change(changed, removed)
     :ok
   end
 end
