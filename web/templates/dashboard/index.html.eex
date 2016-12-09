@@ -7,7 +7,9 @@
     <h4>Apps</h4>
     <table>
       <%= for app <- @apps do %>
-      <tr class='app' data-name='<%= app.name %>'><td class='name'><%= app.name %></td></tr>
+      <tr class='app' data-name='<%= app.name %>'>
+        <td><a href='https://dashboard.heroku.com/apps/<%= app.name %>'><%= app.name %></a></td>
+      </tr>
 
       <%= for group <- app.groups do %>
 
