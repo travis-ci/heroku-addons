@@ -1,4 +1,4 @@
-defmodule MetaDashboard.PageControllerTest do
+defmodule MetaDashboard.DashboardControllerTest do
   use MetaDashboard.ConnCase
 
   import Mock

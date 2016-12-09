@@ -1,4 +1,4 @@
-defmodule MetaDashboard.PageController do
+defmodule MetaDashboard.DashboardController do
   use MetaDashboard.Web, :controller
 
   def index(conn, _params) do

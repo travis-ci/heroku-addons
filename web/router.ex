@@ -16,8 +16,8 @@ defmodule MetaDashboard.Router do
   scope "/", MetaDashboard do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
-    get "/:app/:addon", PageController, :addon
+    get "/", DashboardController, :index
+    get "/:app/:addon", DashboardController, :addon
   end
 
   # Other scopes may use custom stacks.
