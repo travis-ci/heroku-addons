@@ -5,20 +5,16 @@
 <div class="row marketing">
   <div class="col-lg-6">
     <h4>Apps</h4>
-    <ul>
+    <table>
       <%= for app <- @apps do %>
-      <li class='app'>
-        <span class='name'><%= app.name %></span>
-        <ul>
-          <%= for addon <- app.addons do %>
-          <li class='addon'>
-            <a class='external' href='<%= addon.url %>'><%= addon.name %></a>
-            <a class='shortcut' href='/<%= app.name %>/<%= addon.name %>' title='You can bookmark this link that forwards to the addon, it will work as long as an addon named <%= addon.name %> exists on the <%= app.name %> app'>#</a>
-          </li>
-          <% end %>
-        </ul>
-      </li>
+      <tr class='app' data-name='<%= app.name %>'><td class='name'><%= app.name %></td></tr>
+      <%= for addon <- app.addons do %>
+      <tr class='addon' data-app='<%= app.name %>' data-name='<%= addon.name %>'>
+        <td><a class='external' href='<%= addon.url %>'><%= addon.name %></a></td>
+        <td><a class='shortcut' href='/<%= app.name %>/<%= addon.name %>' title='You can bookmark this link that forwards to the addon, it will work as long as an addon named <%= addon.name %> exists on the <%= app.name %> app'>#</a></td>
+      </tr>
       <% end %>
-    </ul>
+      <% end %>
+    </table>
   </div>
 </div>
