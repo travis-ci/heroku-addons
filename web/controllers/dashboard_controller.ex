@@ -14,6 +14,7 @@ defmodule MetaDashboard.DashboardController do
               %{
                 :name => addon["name"],
                 :description => addon["description"],
+                :attachment => addon["attachment_name"],
                 :url => addon["sso_url"]
               }
             end)

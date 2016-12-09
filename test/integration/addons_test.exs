@@ -12,7 +12,7 @@ defmodule MetaDashboard.Integration.Addons do
   test "registering" do
     with_mock Heroku.Addon, [list_existing_addons_for_an_app: fn(app) ->
       {:ok, [
-        %{"name" => "#{app}-addon-one", "description" => "Addon one!", "sso_url" => "https://heroku.com/addons/#{app}-addon-one", "group_description" => "group one"},
+        %{"name" => "#{app}-addon-one", "description" => "Addon one!", "attachment_name" => "JORTS", "sso_url" => "https://heroku.com/addons/#{app}-addon-one", "group_description" => "group one"},
         %{"name" => "#{app}-addon-two", "sso_url" => "https://heroku.com/addons/#{app}-addon-two", "group_description" => "group one"},
         %{"name" => "#{app}-addon-lonely", "group_description" => "group lonely"}
       ]}
@@ -26,10 +26,12 @@ defmodule MetaDashboard.Integration.Addons do
 
       assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-one] a.external"}) == "a1-addon-one"
       assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-one] .description"}) == "Addon one!"
+      assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-one] .attachment"}) == "JORTS"
       assert attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-one] a.external"}, "href") == "https://heroku.com/addons/a1-addon-one"
       assert String.ends_with?(attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-one] a.shortcut"}, "href"), "/a1/a1-addon-one")
 
       assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-two] a.external"}) == "a1-addon-two"
+      refute Hound.Element.element?({:css, ".addon[data-app=a1][data-name=a1-addon-two] .attachment"})
       assert attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-two] a.external"}, "href") == "https://heroku.com/addons/a1-addon-two"
       assert String.ends_with?(attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-two] a.shortcut"}, "href"), "/a1/a1-addon-two")
 
