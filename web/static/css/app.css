@@ -1,1 +1,7 @@
-/* This file is for your main application css. */
+.app td {
+  padding-top: 2rem;
+}
+
+.group td {
+  padding-top: 1rem;
+}

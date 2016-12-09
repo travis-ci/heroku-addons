@@ -7,10 +7,15 @@ defmodule MetaDashboard.DashboardController do
 
       %{
         :name => app,
-        :addons => Enum.map(addons, fn(addon) ->
+        :groups => Enum.map(Enum.group_by(addons, &(&1["group_description"])), fn {group, addons} ->
           %{
-            :name => addon["name"],
-            :url => addon["sso_url"]
+            :name => group,
+            :addons => Enum.map(addons, fn(addon) ->
+              %{
+                :name => addon["name"],
+                :url => addon["sso_url"]
+              }
+            end)
           }
         end)
       }
