@@ -1,4 +1,4 @@
-# MetaDashboard
+# MetaDashboard [![Build Status](https://travis-ci.org/travis-ci/meta-dashboard.svg?branch=primary)](https://travis-ci.org/travis-ci/meta-dashboard)
 
 This is collection of links to Heroku app addons.
 
