@@ -6,6 +6,10 @@
   padding-top: 4rem;
 }
 
+.app:first-child td {
+  padding-top: 0;
+}
+
 .group td {
   padding-top: 1rem;
 }
