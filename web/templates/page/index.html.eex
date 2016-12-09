@@ -7,7 +7,14 @@
     <h4>Apps</h4>
     <ul>
       <%= for app <- @apps do %>
-      <li><%= app %></li>
+      <li>
+        <%= app.name %>
+        <ul>
+          <%= for addon <- app.addons do %>
+          <li><%= addon.name %></li>
+          <% end %>
+        </ul>
+      </li>
       <% end %>
     </ul>
   </div>
