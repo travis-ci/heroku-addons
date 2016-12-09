@@ -1,5 +1,9 @@
+.apps {
+  width: 100%;
+}
+
 .app td {
-  padding-top: 2rem;
+  padding-top: 4rem;
 }
 
 .group td {
