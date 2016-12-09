@@ -13,6 +13,7 @@ defmodule MetaDashboard.DashboardController do
             :addons => Enum.map(addons, fn(addon) ->
               %{
                 :name => addon["name"],
+                :description => addon["description"],
                 :url => addon["sso_url"]
               }
             end)
