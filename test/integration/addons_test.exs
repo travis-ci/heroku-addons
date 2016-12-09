@@ -10,16 +10,18 @@ defmodule MetaDashboard.Integration.Addons do
   hound_session
 
   test "registering" do
-    with_mock Heroku.Addon, [list_existing_addons_for_an_app: fn(app) -> {:ok, [%{"name" => "#{app}-addon-one"}, %{"name" => "#{app}-addon-two"}]} end] do
+    with_mock Heroku.Addon, [list_existing_addons_for_an_app: fn(app) -> {:ok, [%{"name" => "#{app}-addon-one", "sso_url" => "https://heroku.com/addons/#{app}-addon-one"}, %{"name" => "#{app}-addon-two", "sso_url" => "https://heroku.com/addons/#{app}-addon-two"}]} end] do
       navigate_to "/"
 
       assert visible_text({:css, ".app:nth-child(1) > .name"}) == "travis-production"
-      assert visible_text({:css, ".app:nth-child(1) .addon:nth-child(1) .name"}) == "travis-production-addon-one"
-      assert visible_text({:css, ".app:nth-child(1) .addon:nth-child(2) .name"}) == "travis-production-addon-two"
+      assert visible_text({:css, ".app:nth-child(1) .addon:nth-child(1) a"}) == "travis-production-addon-one"
+      assert attribute_value({:css, ".app:nth-child(1) .addon:nth-child(1) a"}, "href") == "https://heroku.com/addons/travis-production-addon-one"
+      assert visible_text({:css, ".app:nth-child(1) .addon:nth-child(2) a"}) == "travis-production-addon-two"
+      assert attribute_value({:css, ".app:nth-child(1) .addon:nth-child(2) a"}, "href") == "https://heroku.com/addons/travis-production-addon-two"
 
       assert visible_text({:css, ".app:nth-child(2) > .name"}) == "travis-pro-production"
-      assert visible_text({:css, ".app:nth-child(2) .addon:nth-child(1) .name"}) == "travis-pro-production-addon-one"
-      assert visible_text({:css, ".app:nth-child(2) .addon:nth-child(2) .name"}) == "travis-pro-production-addon-two"
+      assert visible_text({:css, ".app:nth-child(2) .addon:nth-child(1) a"}) == "travis-pro-production-addon-one"
+      assert visible_text({:css, ".app:nth-child(2) .addon:nth-child(2) a"}) == "travis-pro-production-addon-two"
     end
   end
 end

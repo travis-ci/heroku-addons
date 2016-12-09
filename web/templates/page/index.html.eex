@@ -12,7 +12,7 @@
         <ul>
           <%= for addon <- app.addons do %>
           <li class='addon'>
-            <span class='name'><%= addon.name %></span>
+            <a class='name' href='<%= addon.url %>'><%= addon.name %></a>
           </li>
           <% end %>
         </ul>

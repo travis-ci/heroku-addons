@@ -8,7 +8,10 @@ defmodule MetaDashboard.PageController do
       %{
         :name => app,
         :addons => Enum.map(addons, fn(addon) ->
-          %{:name => addon["name"]}
+          %{
+            :name => addon["name"],
+            :url => addon["sso_url"]
+          }
         end)
       }
     end)
