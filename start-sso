@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+# based on nginx buildpack
+# https://github.com/ryandotsmith/nginx-buildpack/blob/master/bin/start-nginx
+
+psmgr=/tmp/sso-buildpack-wait
+rm -f $psmgr
+mkfifo $psmgr
+
+n=1
+while getopts :f option ${@:1:2}
+do
+        case "${option}"
+        in
+                f) FORCE=$OPTIND; n=$((n+1));;
+        esac
+done
+
+#Start App Server
+(
+	#Take the command passed to this bin and start it.
+	#E.g. bin/start-sso bundle exec unicorn -c config/unicorn.rb
+        COMMAND=${@:$n}
+	echo "buildpack=sso at=start-app cmd=$COMMAND"
+	$COMMAND
+	echo 'app' >$psmgr
+) &
+
+if [[ -z "$FORCE" ]]
+then
+	FILE="/tmp/app-initialized"
+
+	#We block on app-initialized so that when sso binds to $PORT
+	#are app is ready for traffic.
+	while [[ ! -f "$FILE" ]]
+	do
+		echo 'buildpack=sso at=app-initialization'
+		sleep 1
+	done
+	echo 'buildpack=sso at=app-initialized'
+fi
+
+#Start sso
+(
+	#We expect sso to run in foreground.
+	echo 'buildpack=sso at=sso-start'
+	sso -listen ":$PORT" \
+	    -upstream "http://127.0.0.1:$SSO_UPSTREAM_PORT" \
+	    -app "$SSO_APP_PUBLIC_URL" \
+	    -encryption-key "$SSO_ENCRYPTION_KEY" \
+	    -csrf-key "$SSO_CSRF_KEY" \
+	    -authorized-users "$SSO_AUTHORIZED_USERS"
+	echo 'sso' >$psmgr
+) &
+
+#This read will block the process waiting on a msg to be put into the fifo.
+#If any of the processes defined above should exit,
+#a msg will be put into the fifo causing the read operation
+#to un-block. The process putting the msg into the fifo
+#will use it's process name as a msg so that we can print the offending
+#process to stdout.
+read exit_process <$psmgr
+echo "buildpack=sso at=exit process=$exit_process"
+exit 1
