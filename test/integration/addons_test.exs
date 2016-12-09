@@ -18,17 +18,17 @@ defmodule MetaDashboard.Integration.Addons do
     end] do
       navigate_to "/"
 
-      assert visible_text({:css, ".app[data-name=travis-production] .name"}) == "travis-production"
+      assert visible_text({:css, ".app[data-name=a1] .name"}) == "a1"
 
-      assert visible_text({:css, ".addon[data-app=travis-production][data-name=travis-production-addon-one] a.external"}) == "travis-production-addon-one"
-      assert attribute_value({:css, ".addon[data-app=travis-production][data-name=travis-production-addon-one] a.external"}, "href") == "https://heroku.com/addons/travis-production-addon-one"
-      assert String.ends_with?(attribute_value({:css, ".addon[data-app=travis-production][data-name=travis-production-addon-one] a.shortcut"}, "href"), "/travis-production/travis-production-addon-one")
+      assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-one] a.external"}) == "a1-addon-one"
+      assert attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-one] a.external"}, "href") == "https://heroku.com/addons/a1-addon-one"
+      assert String.ends_with?(attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-one] a.shortcut"}, "href"), "/a1/a1-addon-one")
 
-      assert visible_text({:css, ".addon[data-app=travis-production][data-name=travis-production-addon-two] a.external"}) == "travis-production-addon-two"
-      assert attribute_value({:css, ".addon[data-app=travis-production][data-name=travis-production-addon-two] a.external"}, "href") == "https://heroku.com/addons/travis-production-addon-two"
-      assert String.ends_with?(attribute_value({:css, ".addon[data-app=travis-production][data-name=travis-production-addon-two] a.shortcut"}, "href"), "/travis-production/travis-production-addon-two")
+      assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-two] a.external"}) == "a1-addon-two"
+      assert attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-two] a.external"}, "href") == "https://heroku.com/addons/a1-addon-two"
+      assert String.ends_with?(attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-two] a.shortcut"}, "href"), "/a1/a1-addon-two")
 
-      assert visible_text({:css, ".app[data-name=travis-pro-production] .name"}) == "travis-pro-production"
+      assert visible_text({:css, ".app[data-name=a2] .name"}) == "a2"
     end
   end
 end

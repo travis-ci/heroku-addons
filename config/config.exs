@@ -21,6 +21,15 @@ config :logger, :console,
 config :json_hyperschema_client_builder, Heroku,
   access_token: System.get_env("HEROKU_ACCESS_TOKEN")
 
+heroku_apps_env = System.get_env("HEROKU_APPS")
+heroku_apps = case heroku_apps_env do
+  nil -> ~w(travis-production travis-pro-production)
+  _ -> ~w(#{heroku_apps_env})
+end
+
+config :meta_dashboard,
+  heroku_apps: heroku_apps
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

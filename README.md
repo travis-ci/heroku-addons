@@ -2,6 +2,8 @@
 
 This is collection of links to Heroku app addons.
 
+The app list is determined from the `HEROKU_APPS` environment variable, which should be space-separated.
+
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`

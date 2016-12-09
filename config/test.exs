@@ -6,6 +6,9 @@ config :meta_dashboard, MetaDashboard.Endpoint,
   http: [port: 4001],
   server: true
 
+config :meta_dashboard,
+  heroku_apps: ~w(a1 a2)
+
 # Print only warnings and errors during test
 config :logger, level: :warn
 

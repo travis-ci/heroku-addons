@@ -2,7 +2,7 @@ defmodule MetaDashboard.DashboardController do
   use MetaDashboard.Web, :controller
 
   def index(conn, _params) do
-    apps = Enum.map(~w{travis-production travis-pro-production}, fn(app) ->
+    apps = Enum.map(Application.get_env(:meta_dashboard, :heroku_apps), fn(app) ->
       {_, addons} = Heroku.Addon.list_existing_addons_for_an_app(app)
 
       %{
