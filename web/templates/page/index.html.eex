@@ -12,7 +12,8 @@
         <ul>
           <%= for addon <- app.addons do %>
           <li class='addon'>
-            <a class='name' href='<%= addon.url %>'><%= addon.name %></a>
+            <a class='external' href='<%= addon.url %>'><%= addon.name %></a>
+            <a class='shortcut' href='/<%= app.name %>/<%= addon.name %>' title='You can bookmark this link that forwards to the addon, it will work as long as an addon named <%= addon.name %> exists on the <%= app.name %> app'>#</a>
           </li>
           <% end %>
         </ul>

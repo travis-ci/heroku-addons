@@ -18,4 +18,10 @@ defmodule MetaDashboard.PageController do
 
     render conn, "index.html", apps: apps
   end
+
+  def addon(conn, %{"app" => app, "addon" => addon_name}) do
+    {_, addons} = Heroku.Addon.list_existing_addons_for_an_app(app)
+    [url] = Enum.filter_map(addons, fn(addon) -> addon["name"] == addon_name end, &(&1["sso_url"]))
+    redirect(conn, external: url)
+  end
 end
