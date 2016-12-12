@@ -3,6 +3,8 @@
 # based on nginx buildpack
 # https://github.com/ryandotsmith/nginx-buildpack/blob/master/bin/start-nginx
 
+# This is a direct import of Igor’s travis-pro/codesearch/start-sso
+
 psmgr=/tmp/sso-buildpack-wait
 rm -f $psmgr
 mkfifo $psmgr
