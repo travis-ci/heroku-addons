@@ -1,4 +1,4 @@
-# HerokuAddons [![Build Status](https://travis-ci.org/travis-ci/heroku-addons.svg?branch=primary)](https://travis-ci.org/travis-ci/heroku-addons)
+# Heroku Addons [![Build Status](https://travis-ci.org/travis-ci/heroku-addons.svg?branch=primary)](https://travis-ci.org/travis-ci/heroku-addons)
 
 This is collection of links to Heroku app addons.
 
