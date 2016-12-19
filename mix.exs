@@ -39,7 +39,7 @@ defmodule HerokuAddons.Mixfile do
      {:cowboy, "~> 1.0"},
      {:ex_heroku_client, "~> 0.3.0"},
      {:hound, github: "HashNuke/hound"},
-     {:phone, github: "SnowflakeAi/phone", branch: "updated_elixir"},
+     {:phone, github: "SnowflakeAi/phone", tag: "updated_elixir"},
      {:mock, "~> 0.2.0", only: :test}]
   end
 end
