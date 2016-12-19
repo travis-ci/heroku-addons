@@ -38,7 +38,7 @@ defmodule HerokuAddons.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:ex_heroku_client, "~> 0.3.0"},
-     {:hound, git: "https://github.com/HashNuke/hound.git"},
+     {:hound, github: "HashNuke/hound"},
      {:mock, "~> 0.2.0", only: :test}]
   end
 end
