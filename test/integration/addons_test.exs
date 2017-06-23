@@ -10,7 +10,7 @@ defmodule HerokuAddons.Integration.Addons do
   hound_session()
 
   test "registering" do
-    with_mock Heroku.Addon, [list_existing_addons_for_an_app: fn(app) ->
+    with_mock Heroku.AddOn, [list_existing_addons_for_an_app: fn(app) ->
       {:ok, [
         %{"name" => "#{app}-addon-one", "description" => "Addon one!", "attachment_name" => "JORTS", "sso_url" => "https://heroku.com/addons/#{app}-addon-one", "group_description" => "group one"},
         %{"name" => "#{app}-addon-two", "sso_url" => "https://heroku.com/addons/#{app}-addon-two", "group_description" => "group one"},
