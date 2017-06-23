@@ -35,16 +35,16 @@ defmodule HerokuAddons.Integration.Addons do
 
       assert visible_text({:css, ".group[data-name='group one'] .name"}) == "group one"
 
-      assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-one] a.external"}) == "addon-one"
-      assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-one] .description"}) == "a1-addon-one-1234"
-      assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-one] .attachment"}) == "JORTS"
-      assert attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-one] a.external"}, "href") == "https://heroku.com/addons/a1-addon-one"
-      assert String.ends_with?(attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-one] a.shortcut"}, "href"), "/a1/a1-addon-one")
+      assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-one-1234] a.external"}) == "addon-one"
+      assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-one-1234] .description"}) == "a1-addon-one-1234"
+      assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-one-1234] .attachment"}) == "JORTS"
+      assert attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-one-1234] a.external"}, "href") == "https://heroku.com/addons/a1-addon-one"
+      assert String.ends_with?(attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-one-1234] a.shortcut"}, "href"), "/a1/a1-addon-one")
 
-      assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-two] a.external"}) == "addon-two"
-      refute Hound.Element.element?({:css, ".addon[data-app=a1][data-name=a1-addon-two] .attachment"})
-      assert attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-two] a.external"}, "href") == "https://heroku.com/addons/a1-addon-two"
-      assert String.ends_with?(attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-two] a.shortcut"}, "href"), "/a1/a1-addon-two")
+      assert visible_text({:css, ".addon[data-app=a1][data-name=a1-addon-two-2345] a.external"}) == "addon-two"
+      refute Hound.Element.element?({:css, ".addon[data-app=a1][data-name=a1-addon-two-2345] .attachment"})
+      assert attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-two-2345] a.external"}, "href") == "https://heroku.com/addons/a1-addon-two"
+      assert String.ends_with?(attribute_value({:css, ".addon[data-app=a1][data-name=a1-addon-two-2345] a.shortcut"}, "href"), "/a1/a1-addon-two")
 
       assert visible_text({:css, ".app[data-name=a2] a"}) == "a2"
 
