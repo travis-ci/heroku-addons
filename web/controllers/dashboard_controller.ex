@@ -30,7 +30,7 @@ defmodule HerokuAddons.DashboardController do
 
   def addon(conn, %{"app" => app, "addon" => addon_name}) do
     {_, addons} = Heroku.AddOn.list_existing_addons_for_an_app(app)
-    [url | _] = Enum.filter_map(addons, fn(addon) -> addon["name"] == addon_name end, &(&1["sso_url"]))
+    [url | _] = Enum.filter_map(addons, fn(addon) -> addon["name"] == addon_name end, &(&1["web_url"]))
     redirect(conn, external: url)
   end
 end

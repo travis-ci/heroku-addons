@@ -10,13 +10,22 @@ defmodule HerokuAddons.Integration.Addons do
   hound_session()
 
   test "registering" do
-    with_mock Heroku.AddOn, [list_existing_addons_for_an_app: fn(app) ->
-      {:ok, [
-        %{"name" => "#{app}-addon-one", "description" => "Addon one!", "attachment_name" => "JORTS", "sso_url" => "https://heroku.com/addons/#{app}-addon-one", "group_description" => "group one"},
-        %{"name" => "#{app}-addon-two", "sso_url" => "https://heroku.com/addons/#{app}-addon-two", "group_description" => "group one"},
-        %{"name" => "#{app}-addon-lonely", "group_description" => "group lonely"}
-      ]}
-    end] do
+    with_mocks [
+        {Heroku.AddOn,
+         [],
+         [list_existing_addons_for_an_app: fn(_) ->
+          {:ok, [
+            %{"id" => "1", "name" => "#{app}-addon-one", "attachment_name" => "", "web_url" => "https://heroku.com/addons/#{app}-addon-one", "addon_service" => %{"name" => "group one"}},
+            %{"id" => "2", "name" => "#{app}-addon-two", "web_url" => "https://heroku.com/addons/#{app}-addon-two", "addon_service" => %{"name" => "group one"}},
+            %{"id" => "3", "name" => "#{app}-addon-lonely", "addon_service" => %{"name" => "group lonely"}}]}
+          end]},
+        {Heroku.AddOnAttachment,
+         [],
+         [list_existing_addon_attachments_for_an_app: fn(_) ->
+          {:ok, [
+            %{"name" => "JORTS", "addon" => %{"id" => "1"}}]}
+          end]}
+      ] do
       navigate_to "/"
 
       assert visible_text({:css, ".app[data-name=a1] a"}) == "a1"
