@@ -16,7 +16,8 @@
 
       <%= for addon <- group.addons do %>
       <tr class='addon' data-app='<%= app.name %>' data-name='<%= addon.name %>'>
-        <td><a class='external' href='<%= addon.url %>'><%= addon.name %></a></td>
+        <td><a class='external' href='<%= addon.url %>'><%= addon.plan %></a></td>
+        <td class='description'><%= addon.name %></td>
         <td>
           <%= for attachment <- addon.attachments do %>
           <code class='attachment'><%= attachment %></code>

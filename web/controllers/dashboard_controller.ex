@@ -16,6 +16,7 @@ defmodule HerokuAddons.DashboardController do
             :addons => Enum.map(addons, fn(addon) ->
               %{
                 :name => addon["name"],
+                :plan => addon["plan"]["name"],
                 :attachments => attachments_by_addon_id[addon["id"]] |> Enum.map(&(&1["name"])),
                 :url => addon["web_url"],
               }

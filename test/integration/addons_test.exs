@@ -15,7 +15,7 @@ defmodule HerokuAddons.Integration.Addons do
          [],
          [list_existing_addons_for_an_app: fn(app) ->
           {:ok, [
-            %{"id" => "1", "name" => "#{app}-addon-one", "attachment_name" => "", "web_url" => "https://heroku.com/addons/#{app}-addon-one", "addon_service" => %{"name" => "group one"}},
+            %{"id" => "1", "name" => "#{app}-addon-one", "plan" => %{"name" => "Addon one!"}, "web_url" => "https://heroku.com/addons/#{app}-addon-one", "addon_service" => %{"name" => "group one"}},
             %{"id" => "2", "name" => "#{app}-addon-two", "web_url" => "https://heroku.com/addons/#{app}-addon-two", "addon_service" => %{"name" => "group one"}},
             %{"id" => "3", "name" => "#{app}-addon-lonely", "addon_service" => %{"name" => "group lonely"}}]}
           end]},
