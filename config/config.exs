@@ -18,8 +18,10 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-config :json_hyperschema_client_builder, Heroku,
-  access_token: System.get_env("HEROKU_ACCESS_TOKEN")
+secret = System.get_env("HEROKU_ACCESS_TOKEN")
+config :ex_heroku_client, :api_config,
+  headers: ["Authorization": "Bearer #{secret}",
+            "Accept": "application/vnd.heroku+json; version=3"]
 
 heroku_apps_env = System.get_env("HEROKU_APPS")
 heroku_apps = case heroku_apps_env do

@@ -7,7 +7,7 @@ defmodule HerokuAddons.Integration.Addons do
   use Hound.Helpers
 
   # Start a Hound session
-  hound_session
+  hound_session()
 
   test "registering" do
     with_mock Heroku.Addon, [list_existing_addons_for_an_app: fn(app) ->

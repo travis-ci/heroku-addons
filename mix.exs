@@ -19,7 +19,7 @@ defmodule HerokuAddons.Mixfile do
     [mod: {HerokuAddons, []},
      applications: [
        :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-       :ex_heroku_client
+       :json_hyperschema_client_builder, :ex_heroku_client, :httpotion, :httpoison
     ]]
   end
 
@@ -31,14 +31,16 @@ defmodule HerokuAddons.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.2.1"},
+    [{:phoenix, "~> 1.2.4"},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:ex_heroku_client, "~> 0.3.0"},
+     {:ex_heroku_client, github: "igorwwwwwwwwwwwwwwwwwwww/ex_heroku_client", branch: "patch-1"},
+     {:json_hyperschema_client_builder, github: "cantierecreativo/json_hyperschema_client_builder", override: true},
      {:hound, "~> 1.0"},
-     {:mock, "~> 0.2.0", only: :test}]
+     {:mock, "~> 0.2.0", only: :test},
+     {:httpotion, "~> 3.0.2"}]
   end
 end
