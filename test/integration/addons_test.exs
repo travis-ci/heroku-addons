@@ -23,7 +23,9 @@ defmodule HerokuAddons.Integration.Addons do
          [],
          [list_existing_addon_attachments_for_an_app: fn(_) ->
           {:ok, [
-            %{"name" => "JORTS", "addon" => %{"id" => "1"}}]}
+            %{"name" => "JORTS", "addon" => %{"id" => "1"}},
+            %{"addon" => %{"id" => "2"}},
+            %{"addon" => %{"id" => "3"}}]}
           end]}
       ] do
       navigate_to "/"
