@@ -16,11 +16,11 @@
 
       <%= for addon <- group.addons do %>
       <tr class='addon' data-app='<%= app.name %>' data-name='<%= addon.name %>'>
-        <td><a class='external' href='<%= addon.url %>'><%= addon.name %></a></td>
-        <td class='description'><%= addon.description %></td>
+        <td><a class='external' href='<%= addon.url %>'><%= addon.plan %></a></td>
+        <td class='description'><%= addon.name %></td>
         <td>
-          <%= if addon.attachment do %>
-          <code class='attachment'><%= addon.attachment %></code>
+          <%= for attachment <- addon.attachments do %>
+          <code class='attachment'><%= attachment %></code>
           <% end %>
         </td>
         <td><a class='shortcut' href='/<%= app.name %>/<%= addon.name %>' title='You can bookmark this link that forwards to the addon, it will work as long as an addon named <%= addon.name %> exists on the <%= app.name %> app'>#</a></td>
