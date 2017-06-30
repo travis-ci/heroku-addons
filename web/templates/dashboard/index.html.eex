@@ -5,13 +5,13 @@
     <table class='apps'>
       <%= for app <- @apps do %>
       <tr class='app' data-name='<%= app.name %>'>
-        <td><h4><a href='https://dashboard.heroku.com/apps/<%= app.name %>'><%= app.name %></a></h4></td>
+        <td colspan="4"><h4><a href='https://dashboard.heroku.com/apps/<%= app.name %>'><%= app.name %></a></h4></td>
       </tr>
 
       <%= for group <- app.groups do %>
 
       <tr class='group' data-name='<%= group.name %>'>
-        <td class='name'><%= group.name %></td>
+        <td colspan="4" class='name'><%= group.name %></td>
       </tr>
 
       <%= for addon <- group.addons do %>
