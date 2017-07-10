@@ -19,7 +19,7 @@ defmodule HerokuAddons.Mixfile do
     [mod: {HerokuAddons, []},
      applications: [
        :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-       :ex_heroku_client
+       :ex_heroku_client, :httpotion, :httpoison
     ]]
   end
 
