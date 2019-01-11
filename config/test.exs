@@ -6,8 +6,7 @@ config :heroku_addons, HerokuAddons.Endpoint,
   http: [port: 4001],
   server: true
 
-config :heroku_addons,
-  heroku_apps: ~w(a1 a2 missing)
+config :heroku_addons, heroku_apps: ~w(a1 a2 missing)
 
 # Print only warnings and errors during test
 config :logger, level: :warn
