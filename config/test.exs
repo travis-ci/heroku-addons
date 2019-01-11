@@ -7,7 +7,7 @@ config :heroku_addons, HerokuAddons.Endpoint,
   server: true
 
 config :heroku_addons,
-  heroku_apps: ~w(a1 a2)
+  heroku_apps: ~w(a1 a2 missing)
 
 # Print only warnings and errors during test
 config :logger, level: :warn

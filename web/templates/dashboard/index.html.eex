@@ -4,30 +4,36 @@
 
     <table class='apps'>
       <%= for app <- @apps do %>
-      <tr class='app' data-name='<%= app.name %>'>
-        <td colspan="4"><h4><a href='https://dashboard.heroku.com/apps/<%= app.name %>'><%= app.name %></a></h4></td>
-      </tr>
+        <%= if app.invalid do %>
+          <tr class='app' data-name='<%= app.name %>'>
+            <td colspan="4"><h4><%= app.name %>: error fetching addons</h4></td>
+          </tr>
+        <% else %>
+          <tr class='app' data-name='<%= app.name %>'>
+            <td colspan="4"><h4><a href='https://dashboard.heroku.com/apps/<%= app.name %>'><%= app.name %></a></h4></td>
+          </tr>
 
-      <%= for group <- app.groups do %>
+          <%= for group <- app.groups do %>
 
-      <tr class='group' data-name='<%= group.name %>'>
-        <td colspan="4" class='name'><%= group.name %></td>
-      </tr>
+          <tr class='group' data-name='<%= group.name %>'>
+            <td colspan="4" class='name'><%= group.name %></td>
+          </tr>
 
-      <%= for addon <- group.addons do %>
-      <tr class='addon' data-app='<%= app.name %>' data-name='<%= addon.name %>'>
-        <td><a class='external' href='<%= addon.url %>'><%= addon.plan %></a></td>
-        <td class='description'><%= addon.name %></td>
-        <td>
-          <%= for attachment <- addon.attachments do %>
-          <code class='attachment'><%= attachment %></code>
+          <%= for addon <- group.addons do %>
+          <tr class='addon' data-app='<%= app.name %>' data-name='<%= addon.name %>'>
+            <td><a class='external' href='<%= addon.url %>'><%= addon.plan %></a></td>
+            <td class='description'><%= addon.name %></td>
+            <td>
+              <%= for attachment <- addon.attachments do %>
+              <code class='attachment'><%= attachment %></code>
+              <% end %>
+            </td>
+            <td><a class='shortcut' href='/<%= app.name %>/<%= addon.name %>' title='You can bookmark this link that forwards to the addon, it will work as long as an addon named <%= addon.name %> exists on the <%= app.name %> app'>#</a></td>
+          </tr>
           <% end %>
-        </td>
-        <td><a class='shortcut' href='/<%= app.name %>/<%= addon.name %>' title='You can bookmark this link that forwards to the addon, it will work as long as an addon named <%= addon.name %> exists on the <%= app.name %> app'>#</a></td>
-      </tr>
-      <% end %>
 
-      <% end %>
+          <% end %>
+        <% end %>
 
       <% end %>
     </table>

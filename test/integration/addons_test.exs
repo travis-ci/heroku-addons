@@ -14,10 +14,15 @@ defmodule HerokuAddons.Integration.Addons do
         {Heroku.AddOn,
          [],
          [list_existing_addons_for_an_app: fn(app) ->
-          {:ok, [
-            %{"id" => "1", "name" => "#{app}-addon-one-1234", "plan" => %{"name" => "addon-one"}, "web_url" => "https://heroku.com/addons/#{app}-addon-one-1234", "addon_service" => %{"name" => "group one"}},
-            %{"id" => "2", "name" => "#{app}-addon-two-2345", "plan" => %{"name" => "addon-two"}, "web_url" => "https://heroku.com/addons/#{app}-addon-two-2345", "addon_service" => %{"name" => "group one"}},
-            %{"id" => "3", "name" => "#{app}-addon-lonely-3456", "plan" => %{"name" => "addon-lonely"}, "addon_service" => %{"name" => "group lonely"}}]}
+          case app do
+            "missing" ->
+              {:error, %{"id" => "not_found", "message" => "Couldn't find that app.", "resource" => "app"}}
+            _ ->
+              {:ok, [
+                %{"id" => "1", "name" => "#{app}-addon-one-1234", "plan" => %{"name" => "addon-one"}, "web_url" => "https://heroku.com/addons/#{app}-addon-one-1234", "addon_service" => %{"name" => "group one"}},
+                %{"id" => "2", "name" => "#{app}-addon-two-2345", "plan" => %{"name" => "addon-two"}, "web_url" => "https://heroku.com/addons/#{app}-addon-two-2345", "addon_service" => %{"name" => "group one"}},
+                %{"id" => "3", "name" => "#{app}-addon-lonely-3456", "plan" => %{"name" => "addon-lonely"}, "addon_service" => %{"name" => "group lonely"}}]}
+          end
           end]},
         {Heroku.AddOnAttachment,
          [],
@@ -49,6 +54,8 @@ defmodule HerokuAddons.Integration.Addons do
       assert visible_text({:css, ".app[data-name=a2] a"}) == "a2"
 
       assert visible_text({:css, ".group[data-name='group lonely'] .name"}) == "group lonely"
+
+      assert visible_text({:css, ".app[data-name=missing] h4"}) == "missing: error fetching addons"
     end
   end
 end
