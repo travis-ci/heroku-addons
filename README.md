@@ -30,15 +30,15 @@ it to live at a `travis-ci.{org,com}` domain.
 
 Here are the environment variables configured:
 
-| Environment variable   | Value                                                                                    |
-|------------------------|------------------------------------------------------------------------------------------|
-| `HEROKU_ACCESS_TOKEN`  |                                                                                          |
-| `SECRET_KEY_BASE`      | `mix phoenix.gen.secret`                                                                 |
-| `SSO_APP_PUBLIC_URL`   | https://heroku-addons.travis-ci.org                                                      |
-| `SSO_AUTHORIZED_USERS` | A comma-separated, no-whitespace list of GitHub usernames for users who can access this. |
-| `SSO_CSRF_KEY`         | `echo $RANDOM | md5`                                                                     |
-| `SSO_ENCRYPTION_KEY`   | `echo $RANDOM | md5`                                                                     |
-| `SSO_UPSTREAM_PORT`    | `4000`, as set in `config/prod.exs`                                                      |
+| Environment variable   | Value                                                                                     |
+|------------------------|-------------------------------------------------------------------------------------------|
+| `HEROKU_ACCESS_TOKEN`  |                                                                                           |
+| `SECRET_KEY_BASE`      | `mix phoenix.gen.secret`                                                                  |
+| `SSO_APP_PUBLIC_URL`   | https://heroku-addons.travis-ci.org                                                       |
+| `SSO_AUTHORIZED_USERS` | A comma-separated, no-whitespace list of GitHub usernames for users who can access this.  |
+| `SSO_CSRF_KEY`         | `echo $RANDOM \| md5`                                                                     |
+| `SSO_ENCRYPTION_KEY`   | `echo $RANDOM \| md5`                                                                     |
+| `SSO_UPSTREAM_PORT`    | `4000`, as set in `config/prod.exs`                                                       |
 
 Here are the buildpacks:
 
